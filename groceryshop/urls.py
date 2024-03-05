@@ -22,7 +22,6 @@ urlpatterns = [
     path('',views.index,name='index'),
     path('shop/',views.shop,name='shop'),
     path('about/',views.about,name='about'),
-    path('vagetables/',views.vegetables,name='vegetables'),
     path('blog/',views.blog,name='blog'),
     path('contact/',views.contact,name='contact'),
     path('home/',views.index,name='index'),

@@ -10,8 +10,7 @@ def shop(request):
 def about(request):
     return render(request,'about.html')
 
-def vegetables(request):
-    return render(request,'vagetables.html')
+
 
 def blog(request):
     return render(request,'blog.html')
