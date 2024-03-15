@@ -25,4 +25,10 @@ urlpatterns = [
     path('blog/',views.blog,name='blog'),
     path('contact/',views.contact,name='contact'),
     path('home/',views.index,name='index'),
+    path('signup',views.signup,name='signup'),
+    path('verify_otp/',views.verify_otp,name='verify_otp'),
+    path('login_view',views.login_view,name='login_view'),
+    path('logout/',views.logout_view,name='logout'),
+    path('send_otp/',views.send_otp,name='send_otp'),
+    path('reset_password/',views.reset_password,name='reset_password'),
 ]

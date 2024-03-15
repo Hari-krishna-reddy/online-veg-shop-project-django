@@ -28,6 +28,8 @@
       <link rel="stylesheet" href="{% static 'css/jquery.mCustomScrollbar.min.css' %}">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="{% static 'https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css' %}">
+      <!-- popup css-->
+      <link rel="stylesheet" href="{% static 'css/popup open.css'%}">
    </head>
    <body>
       <div class="header_section">
@@ -55,6 +57,11 @@
                      <li class="nav-item">
                         <a class="nav-link" href="/contact">Contact Us</a>
                      </li>
+                     <li class="nav-item">
+                        
+                        <a class="nav-link" href="#" onclick="openPopupOnClick('login-popup')">Login/Signup</a>
+                        
+                     </li>
                   </ul>
                   <form class="form-inline my-2 my-lg-0">
                      <div class="search_icon"><i class="fa fa-search" aria-hidden="true"></i></div>
@@ -63,6 +70,57 @@
             </nav>
          </div>
       </div>
+      <!-- popup code start-->
+      
+
+      <div class="popup-container" id="login-popup">
+          <div class="close-btn" onclick="closePopup('login-popup')">X</div>
+          <div class="form-container">
+              <h2>Login</h2>
+              <form action="/login_view" method="post">
+                  {% csrf_token %}
+                  <input type="text" name="username" placeholder="Username" required>
+                  <input type="password"name="pass" placeholder="Password" required>
+                  <input type="submit" value="Login">
+              </form>
+              <div class="switch-btn" onclick="toggleForm('login-popup', 'signup-popup')">Don't have an account? Sign up</div>
+              <a href="/send_otp" style="color: blue;" >Forgot Password?</a>
+          </div>
+      </div>
+  
+      <div class="popup-container" id="signup-popup">
+          <div class="close-btn" onclick="closePopup('signup-popup')">X</div>
+          <div class="form-container">
+              <h2>Sign up</h2>
+              <form action="/signup" method="post">
+                  {% csrf_token %}
+                  
+                  <label for="firstname">First Name</label>
+                  <input type="text" placeholder="Enter First Name" id="firstname" name="firstname">
+  
+                  <label for="lastname">Last Name</label>
+                  <input type="text" placeholder="Enter Last Name" id="lastname" name="lastname">
+  
+                  <label for="username">Username</label>
+                  <input type="text" placeholder="Username" name="username" id="username">
+  
+                  <label for="email">Email</label>
+                  <input type="text" placeholder="Email" name="email" id="email">
+  
+                  <label for="password1">Password</label>
+                  <input type="password" placeholder="Password" id="password1" name="password1">
+  
+                  <label for="password2">Confirm Password</label>
+                  <input type="password" placeholder="Confirm Password" id="password2" name="password2">
+  
+                  <input type="submit" value="Sign up">
+              </form>
+              <div class="switch-btn" onclick="toggleForm('signup-popup', 'login-popup')">Already have an account? Login</div>
+          </div>
+      </div>
+     <!--pop up code ends-->
+ 
+     
       <!-- header section end -->
       <!-- layout_border start -->
       <div class="container-fluid">
@@ -76,7 +134,7 @@
                            <div class="row">
                               <div class="col-sm-6">
                                  <div class="banner_taital_main">
-                                    <h1 class="banner_taital">Fresh Vagetable Shop</h1>
+                                    <h1 class="banner_taital">Fresh Vegetable Shop</h1>
                                     <p class="banner_text">Many variations of passages of Lorem Ipsum available, but the majority have suffered</p>
                                     <div class="btn_main">
                                        <div class="started_text"><a href="/shop">Buy Now</a></div>
@@ -93,7 +151,7 @@
                            <div class="row">
                               <div class="col-sm-6">
                                  <div class="banner_taital_main">
-                                    <h1 class="banner_taital">Fresh Vagetable Shop</h1>
+                                    <h1 class="banner_taital">Fresh Vegetable Shop</h1>
                                     <p class="banner_text">Many variations of passages of Lorem Ipsum available, but the majority have suffered</p>
                                     <div class="btn_main">
                                        <div class="started_text"><a href="/shop">Buy Now</a></div>
@@ -110,7 +168,7 @@
                            <div class="row">
                               <div class="col-sm-6">
                                  <div class="banner_taital_main">
-                                    <h1 class="banner_taital">Fresh Vagetable Shop</h1>
+                                    <h1 class="banner_taital">Fresh Vegetable Shop</h1>
                                     <p class="banner_text">Many variations of passages of Lorem Ipsum available, but the majority have suffered</p>
                                     <div class="btn_main">
                                        <div class="started_text"><a href="/shop">Buy Now</a></div>
@@ -173,24 +231,24 @@
                            <div class="hover01 column">
                               <figure><img src="{% static 'images/img-1.png' %}"></figure>
                            </div>
-                           <h3 class="harshal_text">Harshal</h3>
-                           <h3 class="rate_text">₹19</h3>
+                           <h3 class="harshal_text">Carrot</h3>
+                           <h3 class="rate_text">₹40/Kg</h3>
                            <div class="read_bt_1"><a href="#">Read More</a></div>
                         </div>
                         <div class="col-md-4">
                            <div class="hover01 column">
                               <figure><img src="{% static 'images/img-2.png' %}"></figure>
                            </div>
-                           <h3 class="harshal_text">Foodism</h3>
-                           <h3 class="rate_text">₹19</h3>
+                           <h3 class="harshal_text">Beetroot</h3>
+                           <h3 class="rate_text">₹30/Kg</h3>
                            <div class="read_bt_1"><a href="#">Read More</a></div>
                         </div>
                         <div class="col-md-4">
                            <div class="hover01 column">
                               <figure><img src="{% static 'images/img-3.png' %}"></figure>
                            </div>
-                           <h3 class="harshal_text">Seven</h3>
-                           <h3 class="rate_text">₹19</h3>
+                           <h3 class="harshal_text">Tomato</h3>
+                           <h3 class="rate_text">₹20/Kg</h3>
                            <div class="read_bt_1"><a href="#">Read More</a></div>
                         </div>
                      </div>
@@ -201,24 +259,24 @@
                            <div class="hover01 column">
                               <figure><img src="{% static 'images/img-4.png' %}"></figure>
                            </div>
-                           <h3 class="harshal_text">Cyrus</h3>
-                           <h3 class="rate_text">₹19</h3>
+                           <h3 class="harshal_text">Beans</h3>
+                           <h3 class="rate_text">₹80/Kg</h3>
                            <div class="read_bt_1"><a href="#">Read More</a></div>
                         </div>
                         <div class="col-md-4">
                            <div class="hover01 column">
                               <figure><img src="{% static 'images/img-5.png' %}"></figure>
                            </div>
-                           <h3 class="harshal_text">Elianna</h3>
-                           <h3 class="rate_text">$19</h3>
+                           <h3 class="harshal_text">Coriander</h3>
+                           <h3 class="rate_text">₹15/Pack</h3>
                            <div class="read_bt_1"><a href="#">Read More</a></div>
                         </div>
                         <div class="col-md-4">
                            <div class="hover01 column">
                               <figure><img src="{% static 'images/img-6.png' %}"></figure>
                            </div>
-                           <h3 class="harshal_text">Friedman</h3>
-                           <h3 class="rate_text">₹19</h3>
+                           <h3 class="harshal_text">Lettuce</h3>
+                           <h3 class="rate_text">₹15/Pack</h3>
                            <div class="read_bt_1"><a href="#">Read More</a></div>
                         </div>
                      </div>
@@ -380,5 +438,7 @@
       <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
       <script src="{% static 'js/jquery-3.0.0.min.js' %}"></script>
       <script src="{% static 'js/plugin.js' %}"></script>
+      <script src="{% static 'js/automatic_popup.js' %}"></script>
+      <script src="{% static 'js/click to open popup.js' %}"></script>
    </body>
 </html>
